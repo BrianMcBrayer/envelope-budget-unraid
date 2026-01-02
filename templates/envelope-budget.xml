@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Container version="2.0">
+  <Name>EnvelopeBudget</Name>
+  <Repository>ghcr.io/brianmcbrayer/envelope-budget:0.0.1</Repository>
+  <Registry>https://github.com/BrianMcBrayer/envelope-budget</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/BrianMcBrayer/envelope-budget/issues</Support>
+  <Project>https://github.com/BrianMcBrayer/envelope-budget</Project>
+  <Overview>Self-hosted envelope budgeting with reset/rollover funding, monthly auto-sync, and a modern HTMX UI. SQLite-backed and privacy-first.</Overview>
+  <Category>Finance: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:5000]/</WebUI>
+
+  <Config Name="WebUI Port" Target="5000" Default="5000" Mode="tcp" Description="The port for the Flask/Gunicorn web server." Type="Port" Display="always" Required="true" Mask="false">5000</Config>
+
+  <Config Name="App Data Storage" Target="/app/instance" Default="/mnt/user/appdata/budget-app" Mode="rw" Description="Location for the budget.db SQLite file." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/budget-app</Config>
+
+  <Config Name="App Password Hash" Target="APP_PASSWORD" Default="scrypt:32768:8:1$ylQL08tQL0sHoks8$ff51f7859c6bccc2e7b19635b2b2b3efd08ae2d231a8d05f2e4d8c8e755ad4f95280b57d4b9d2ecb2044b001e3d8e0fea5d6d0e0db220b2dd587435f0e13bab7" Description="The hashed password for login. Generate via 'budget-cli password hash'." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+
+  <Config Name="Secret Key" Target="SECRET_KEY" Default="change_this_secret" Description="Flask secret key for session signing." Type="Variable" Display="advanced" Required="true" Mask="true"></Config>
+
+  <Config Name="Database URL" Target="DATABASE_URL" Default="sqlite:////app/instance/budget.db" Description="Internal SQLAlchemy connection string." Type="Variable" Display="advanced" Required="true" Mask="false">sqlite:////app/instance/budget.db</Config>
+
+  <Description>
+    A lightweight envelope budgeting app designed for month-to-month clarity.
+    - Dual funding modes: Reset (fixed bills) and Rollover (sinking funds).
+    - Automatic monthly sync when you come back after gaps.
+    - HTMX + Alpine.js UI with Flask and SQLAlchemy.
+    - Self-hosted with SQLite for privacy.
+  </Description>
+</Container>
