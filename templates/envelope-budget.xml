@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2.0">
   <Name>EnvelopeBudget</Name>
-  <Repository>ghcr.io/brianmcbrayer/envelope-budget:0.0.1</Repository>
+  <Repository>ghcr.io/brianmcbrayer/envelope-budget:latest</Repository>
   <Registry>https://github.com/BrianMcBrayer/envelope-budget</Registry>
   <Network>bridge</Network>
   <Privileged>false</Privileged>
